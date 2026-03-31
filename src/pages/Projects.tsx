@@ -5,19 +5,19 @@ import { FaLink } from "react-icons/fa";
 const projects = [
   {
     title: 'Baki.ai',
-    image: '../public/baki-ai.png',
+    image: '../assets/baki-ai.png',
     description: 'AI-based platform built with React + TypeScript and Tailwind CSS.',
     links: 'https://baki-ai-1.netlify.app/'
   },
   {
     title: 'Movie App',
-    image: '../public/movie-app.png',
+    image: '../assets/movie-app.png',
     description: 'Movie browsing app with API integration using React TS.',
     links: 'https://e-movie-app.netlify.app/'
   },
   {
     title: 'Online IT School',
-    image: '../public/edu-online.png',
+    image: '../assets/edu-online.png',
     description: 'Educational platform for IT courses built with React TS.',
     links: 'https://edu-online-it-school.netlify.app/'
   }
