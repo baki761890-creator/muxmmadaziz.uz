@@ -1,8 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({
-  apiKey: import.meta.env.VITE_GEMINI_API_KEY, // ✅ TO‘G‘RI
-});
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
+
 export const getChatResponse = async (message: string, history: { role: "user" | "model", parts: { text: string }[] }[]) => {
   const chat = ai.chats.create({
     model: "gemini-3.1-pro-preview",
