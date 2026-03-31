@@ -78,7 +78,7 @@ export const ChatBot: React.FC = () => {
       let errorMsg = "Xatolik yuz berdi";
 
       if (error?.status === 429) {
-        errorMsg = "Developer limiti tugagan, biroz kuting...";
+        errorMsg = "⌛⌛⌛ Developer limiti tugagan, biroz kuting...";
       }
 
       setMessages(prev => [
