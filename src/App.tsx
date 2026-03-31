@@ -8,6 +8,7 @@ import { About } from './pages/About';
 import { Skills } from './pages/Skills';
 import { CV } from './pages/CV';
 import { Contact } from './pages/Contact';
+import Projects from './pages/Projects';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -26,6 +27,7 @@ const AnimatedRoutes = () => {
           <Route path="/about" element={<About />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/cv" element={<CV />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </motion.div>
