@@ -14,14 +14,14 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Baki.ai",
-    image: "../assets/baki.png",
+    image: "../assets/baki-ai.png",
     description:
       "AI-based platform built with React, TypeScript, and Tailwind CSS.",
     link: "https://baki-ai-1.netlify.app/",
   },
   {
     title: "Movie App",
-    image: "../assets/movie.png",
+    image: "../assets/movie-app.png",
     description:
       "Movie browsing app with API integration using React and TypeScript.",
     link: "https://e-movie-app.netlify.app/",
@@ -39,6 +39,13 @@ const projects: Project[] = [
     description:
       "E-commerce solution for managing shopping carts with modern UI and responsive design.",
     link: "https://e-shopping-online.netlify.app/",
+  },
+  {
+    title: "WattsApp Clone with Replit Ai",
+    image: "../assets/wattApp.png",
+    description:
+      "E-commerce solution for managing shopping carts with modern UI and responsive design.",
+    link: "https://6fb1e069-c99f-4ed0-aba9-ec5c4c759d85-00-2y9ocn4bbp6zw.picard.replit.dev/",
   },
 ]
 
