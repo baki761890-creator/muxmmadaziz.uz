@@ -2,7 +2,11 @@ import React from "react"
 import { FaLink } from "react-icons/fa"
 import { motion } from "framer-motion"
 
-
+import bakiImg from "../assets/baki-ai.png"
+import movieImg from "../assets/movie-app.png"
+import eduImg from "../assets/edu-online.png"
+import shopImg from "../assets/shopp.png"
+import wattImg from "../assets/wattApp.png"
 
 type Project = {
   title: string
@@ -14,35 +18,35 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Baki.ai",
-    image: "../assets/baki-ai.png",
+    image: bakiImg,
     description:
       "AI-based platform built with React, TypeScript, and Tailwind CSS.",
     link: "https://baki-ai-1.netlify.app/",
   },
   {
     title: "Movie App",
-    image: "../assets/movie-app.png",
+    image: movieImg,
     description:
       "Movie browsing app with API integration using React and TypeScript.",
     link: "https://e-movie-app.netlify.app/",
   },
   {
     title: "Online IT School",
-    image: "../assets/edu-online.png",
+    image: eduImg,
     description:
       "Educational platform for IT courses with modern UI and responsive design.",
     link: "https://edu-online-it-school.netlify.app/",
   },
   {
     title: "Shopping Cart",
-    image: "../assets/shopp.png",
+    image: shopImg,
     description:
       "E-commerce solution for managing shopping carts with modern UI and responsive design.",
     link: "https://online-shopp-store.netlify.app/",
   },
   {
     title: "WattsApp Clone with Replit Ai",
-    image: "../assets/wattApp.png",
+    image: wattImg,
     description:
       "E-commerce solution for managing shopping carts with modern UI and responsive design.",
     link: "https://chat-sphere-clone--muxamammad.replit.app",
