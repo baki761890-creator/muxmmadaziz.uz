@@ -3,9 +3,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 const AppContext = createContext<any>(null);
 
 export const AppProvider = ({ children }: any) => {
-  const [dark, setDark] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+const [dark, setDark] = useState(() => {
+  const saved = localStorage.getItem("theme");
+  return saved ? saved === "dark" : true; 
+});
 
   // 🔥 REAL DARK MODE FIX
   useEffect(() => {
