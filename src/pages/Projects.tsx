@@ -7,6 +7,7 @@ import movieImg from "../assets/movie-app.png"
 import eduImg from "../assets/edu-online.png"
 import shopImg from "../assets/shopp.png"
 import wattImg from "../assets/wattApp.png"
+import { useApp } from "../context/AppContext"
 
 type Project = {
   title: string
@@ -45,24 +46,28 @@ const projects: Project[] = [
     link: "https://online-shopp-store.netlify.app/",
   },
   {
-    title: "WattsApp Clone with Replit Ai",
+    title: "WhatsApp Clone with Replit AI",
     image: wattImg,
     description:
-      "E-commerce solution for managing shopping carts with modern UI and responsive design.",
+      "Real-time chat app inspired by WhatsApp with modern UI and AI integration.",
     link: "https://chat-sphere-clone--muxamammad.replit.app",
   },
 ]
 
 const Projects: React.FC = () => {
+
+  const {dark}=useApp()
+  
   return (
-    <div className="py-20 min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+    <div className={`py-20 min-h-screen bg-gradient-to-b  transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-4">
+
         {/* TITLE */}
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-4 text-center"
+          className={`text-4xl font-bold mb-4 text-center mt-10 ${dark?'text-white':'text-emerald-500 text-shadow-2xs  text-shadow-black'}`}
         >
           My Projects
         </motion.h1>
@@ -71,7 +76,7 @@ const Projects: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-center text-gray-400 mb-12"
+          className={`text-center  mb-12 ${dark?'text-neutral-500':'text-black'}`}
         >
           Here are some of my featured works
         </motion.p>
@@ -84,7 +89,7 @@ const Projects: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="relative group rounded-2xl overflow-hidden shadow-xl"
+              className={`relative group rounded-2xl overflow-hidden shadow-xl ${dark?'':'shadow-2xl shadow-black'}`}
             >
               {/* IMAGE */}
               <img

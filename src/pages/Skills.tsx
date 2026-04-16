@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { useApp } from '../context/AppContext';
 
 const skills = [
   { name: 'HTML', category: 'Frontend' },
@@ -17,26 +18,28 @@ const skills = [
 ];
 
 export const Skills: React.FC = () => {
+  const {dark}=useApp()
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="page-transition"
+      className="page-transition box-border"
     >
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold mb-4 text-gradient">Skills & Expertise</h2>
-        <p className="text-neutral-400 mb-12">Texnologiyalar bo'yicha mening bilim va ko'nikmalarim.</p>
+        <h2 className="text-4xl font-bold mb-4 text-emerald-400  mt-10 text-shadow-2xs text-shadow-black">Skills & Expertise</h2>
+        <p className={` mt-5 mb-7 ${dark?'text-neutral-500':'text-black'}`} mb-12>Texnologiyalar bo'yicha mening bilim va ko'nikmalarim.</p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {skills.map((skill, index) => (
             <motion.div
-              key={skill.name}
+
+              key={skill.name}      
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.05 }}
+              transition={{ delay: index * 0.00001 }}
               whileHover={{ y: -5 }}
-              className="glass p-6 rounded-2xl flex flex-col items-center justify-center text-center group transition-all hover:bg-emerald-500/5"
+              className={` p-6 rounded-2xl flex flex-col items-center justify-center text-center group transition-all hover:bg-emerald-500/5 hover:cursor-pointer ${dark?'glass':'bg-emerald-500 border-2 border-black  hover:border-emerald-500 '}`} 
             >
               <div className="text-xs text-neutral-500 uppercase tracking-widest mb-2">{skill.category}</div>
               <div className="text-xl font-bold group-hover:text-emerald-400 transition-colors">{skill.name}</div>
@@ -44,32 +47,32 @@ export const Skills: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-20 glass p-8 rounded-3xl">
+        <div className={`mt-20  p-8 rounded-3xl ${dark?'glass':'bg-emerald-500 border-2 border-black'}`}>
           <h3 className="text-2xl font-bold mb-6">Learning Path</h3>
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <span className="text-neutral-300">Frontend Development</span>
-              <span className="text-emerald-400">95%</span>
+              <span className={`${dark?'text-emerald-500':'text-white'}`}>Frontend Development</span>
+              <span className={` ${dark?'text-emerald-500':'text-white'}`}>95%</span>
             </div>
             <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
               <motion.div 
                 initial={{ width: 0 }}
                 animate={{ width: '95%' }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="h-full bg-emerald-500"
+                className={`h-full ${dark?'bg-emerald-500':'bg-white'}`} 
               />
             </div>
 
             <div className="flex justify-between items-center pt-4">
-              <span className="text-neutral-300">Backend (Firebase/Node)</span>
-              <span className="text-emerald-400">75%</span>
+              <span className={`${dark?'text-emerald-500':'text-white'}`}>Backend (Firebase)</span>
+              <span className={` ${dark?'text-emerald-500':'text-white'}`}>75%</span>
             </div>
             <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
               <motion.div 
                 initial={{ width: 0 }}
                 animate={{ width: '75%' }}
                 transition={{ duration: 1, delay: 0.7 }}
-                className="h-full bg-emerald-500"
+                className={`h-full ${dark?'bg-emerald-500':'bg-white'}`} 
               />
             </div>
           </div>

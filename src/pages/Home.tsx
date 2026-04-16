@@ -1,15 +1,19 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowRight, Github, Linkedin,  } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useApp } from '../context/AppContext';
 
 export const Home: React.FC = () => {
+
+  const {dark}=useApp()
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="page-transition flex flex-col items-center justify-center text-center"
+      className={`page-transition flex flex-col w-screen items-center justify-center text-center } `}
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
@@ -31,7 +35,7 @@ export const Home: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+        className={`text-5xl md:text-7xl font-bold mb-6 tracking-tight ${!dark?'text-black':''}`}
       >
         Muxammadaziz <br />
         <span className="text-gradient">Raximjonov</span>
@@ -41,7 +45,7 @@ export const Home: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="text-neutral-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed"
+        className={`text-lg md:text-xl max-w-2xl mb-10 leading-relaxed ${dark?'`text-neutral-400 ':'text-black'}`}
       >
         Full-stack Developer passionate about building high-performance web applications 
         with React, Next.js, and modern technologies.
@@ -61,7 +65,7 @@ export const Home: React.FC = () => {
         </Link>
         <Link 
           to="/skills" 
-          className="glass hover:bg-white/10 px-8 py-3 rounded-full font-semibold transition-all"
+          className={` px-8 py-3 rounded-full font-semibold transition-all ${dark?'glass hover:bg-white/10 ':'bg-black hover:bg-gray-900'} `}
         >
           View Skills
         </Link>
@@ -73,15 +77,13 @@ export const Home: React.FC = () => {
         transition={{ delay: 0.8 }}
         className="mt-16 flex gap-6 text-neutral-500"
       >
-        <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors">
+        <a href="https://github.com/baki761890-creator/muxmmadaziz.uz" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors">
           <Github size={24} />
         </a>
-        <a href="#" className="hover:text-emerald-400 transition-colors">
+        <a href={'https://www.linkedin.com/in/muxmammad-raximjonov-b4bb14401'} target='_blank' className="hover:text-emerald-400 transition-colors">
           <Linkedin size={24} />
         </a>
-        <a href="#" className="hover:text-emerald-400 transition-colors">
-          <Twitter size={24} />
-        </a>
+       
       </motion.div>
     </motion.div>
   );
