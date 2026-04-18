@@ -1,26 +1,38 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+type Lang = "uz" | "ru" | "en" | "de";
+
 type AppContextType = {
+  // 🌙 THEME
   dark: boolean;
   setDark: (value: boolean) => void;
   toggleTheme: () => void;
+
+  // 🌐 LANGUAGE
+  lang: Lang;
+  setLang: (lang: Lang) => void;
+  changeLang: (lang: Lang) => void;
 };
 
 const AppContext = createContext<AppContextType | null>(null);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  // 🌙 DEFAULT DARK MODE ON
+  
+  // 🌙 DARK MODE
   const [dark, setDark] = useState<boolean>(() => {
     const saved = localStorage.getItem("theme");
-
-    // agar saved bo‘lsa uni ishlatadi, bo‘lmasa DARK default
     if (saved) return saved === "dark";
 
     localStorage.setItem("theme", "dark");
     return true;
   });
 
-  // 🔥 apply theme to html root
+  // 🌐 LANGUAGE
+  const [lang, setLang] = useState<Lang>(() => {
+    return (localStorage.getItem("lang") as Lang) || "uz";
+  });
+
+  // 🌙 APPLY DARK MODE
   useEffect(() => {
     const root = document.documentElement;
 
@@ -33,19 +45,38 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [dark]);
 
-  // 🔁 toggle function
+  // 🌐 SAVE LANGUAGE
+  useEffect(() => {
+    localStorage.setItem("lang", lang);
+  }, [lang]);
+
+  // 🔁 TOGGLE THEME
   const toggleTheme = () => {
     setDark((prev) => !prev);
   };
 
+  // 🔁 CHANGE LANGUAGE
+  const changeLang = (newLang: Lang) => {
+    setLang(newLang);
+  };
+
   return (
-    <AppContext.Provider value={{ dark, setDark, toggleTheme }}>
+    <AppContext.Provider
+      value={{
+        dark,
+        setDark,
+        toggleTheme,
+        lang,
+        setLang,
+        changeLang,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
 };
 
-// 🧠 custom hook
+// 🧠 CUSTOM HOOK
 export const useApp = () => {
   const context = useContext(AppContext);
 

@@ -16,50 +16,100 @@ type Project = {
   link: string
 }
 
-const projects: Project[] = [
-  {
-    title: "Baki.ai",
-    image: bakiImg,
-    description:
-      "AI-based platform built with React, TypeScript, and Tailwind CSS.",
-    link: "https://baki-ai-1.netlify.app/",
-  },
-  {
-    title: "Movie App",
-    image: movieImg,
-    description:
-      "Movie browsing app with API integration using React and TypeScript.",
-    link: "https://e-movie-app.netlify.app/",
-  },
-  {
-    title: "Online IT School",
-    image: eduImg,
-    description:
-      "Educational platform for IT courses with modern UI and responsive design.",
-    link: "https://edu-online-it-school.netlify.app/",
-  },
-  {
-    title: "Shopping Cart",
-    image: shopImg,
-    description:
-      "E-commerce solution for managing shopping carts with modern UI and responsive design.",
-    link: "https://online-shopp-store.netlify.app/",
-  },
-  {
-    title: "WhatsApp Clone with Replit AI",
-    image: wattImg,
-    description:
-      "Real-time chat app inspired by WhatsApp with modern UI and AI integration.",
-    link: "https://chat-sphere-clone--muxamammad.replit.app",
-  },
-]
-
 const Projects: React.FC = () => {
+  const { dark, lang } = useApp()
 
-  const {dark}=useApp()
-  
+  const text = {
+    uz: {
+      title: "Mening loyihalarim",
+      desc: "Mening eng yaxshi ishlanmalarim",
+    },
+    ru: {
+      title: "Мои проекты",
+      desc: "Мои лучшие работы",
+    },
+    en: {
+      title: "My Projects",
+      desc: "Here are some of my featured works",
+    },
+    de: {
+      title: "Meine Projekte",
+      desc: "Hier sind einige meiner Projekte",
+    },
+  }
+
+  const t = text[lang]
+
+  const projects: Project[] = [
+    {
+      title: "Baki.ai",
+      image: bakiImg,
+      description:
+        lang === "uz"
+          ? "AI asosida yaratilgan platforma (React, TS, Tailwind)"
+          : lang === "ru"
+          ? "Платформа на базе AI (React, TS, Tailwind)"
+          : lang === "de"
+          ? "KI-basierte Plattform (React, TS, Tailwind)"
+          : "AI-based platform built with React, TypeScript, Tailwind CSS",
+      link: "https://baki-ai-1.netlify.app/",
+    },
+    {
+      title: "Movie App",
+      image: movieImg,
+      description:
+        lang === "uz"
+          ? "API bilan ishlaydigan kino ilovasi"
+          : lang === "ru"
+          ? "Приложение фильмов с API"
+          : lang === "de"
+          ? "Film-App mit API"
+          : "Movie browsing app with API integration",
+      link: "https://e-movie-app.netlify.app/",
+    },
+    {
+      title: "Online IT School",
+      image: eduImg,
+      description:
+        lang === "uz"
+          ? "IT kurslar platformasi"
+          : lang === "ru"
+          ? "Платформа IT курсов"
+          : lang === "de"
+          ? "IT-Lernplattform"
+          : "Educational IT platform",
+      link: "https://edu-online-it-school.netlify.app/",
+    },
+    {
+      title: "Shopping Cart",
+      image: shopImg,
+      description:
+        lang === "uz"
+          ? "E-commerce savdo tizimi"
+          : lang === "ru"
+          ? "E-commerce корзина"
+          : lang === "de"
+          ? "E-Commerce Warenkorb"
+          : "Shopping cart system",
+      link: "https://online-shopp-store.netlify.app/",
+    },
+    {
+      title: "WhatsApp Clone",
+      image: wattImg,
+      description:
+        lang === "uz"
+          ? "Real-time chat ilovasi"
+          : lang === "ru"
+          ? "Чат приложение в реальном времени"
+          : lang === "de"
+          ? "Echtzeit-Chat-App"
+          : "Real-time chat app",
+      link: "https://chat-sphere-clone--muxamammad.replit.app",
+    },
+  ]
+
   return (
-    <div className={`py-20 min-h-screen bg-gradient-to-b  transition-colors duration-300`}>
+    <div className={`py-20 min-h-screen transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-4">
 
         {/* TITLE */}
@@ -67,18 +117,22 @@ const Projects: React.FC = () => {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className={`text-4xl font-bold mb-4 text-center mt-10 ${dark?'text-white':'text-emerald-500 text-shadow-2xs  text-shadow-black'}`}
+          className={`text-4xl font-bold mb-4 text-center mt-10 ${
+            dark ? "text-white" : "text-emerald-500 text-shadow-2xs text-shadow-black"
+          }`}
         >
-          My Projects
+          {t.title}
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className={`text-center  mb-12 ${dark?'text-neutral-500':'text-black'}`}
+          className={`text-center mb-12 ${
+            dark ? "text-neutral-500" : "text-black"
+          }`}
         >
-          Here are some of my featured works
+          {t.desc}
         </motion.p>
 
         {/* GRID */}
@@ -89,16 +143,16 @@ const Projects: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className={`relative group rounded-2xl overflow-hidden shadow-xl ${dark?'':'shadow-2xl shadow-black'}`}
+              className={`relative group rounded-2xl overflow-hidden shadow-xl ${
+                dark ? "" : "shadow-2xl shadow-black"
+              }`}
             >
-              {/* IMAGE */}
               <img
                 src={project.image}
                 alt={project.title}
                 className="w-full h-60 object-cover transform transition duration-500 group-hover:scale-110"
               />
 
-              {/* OVERLAY */}
               <div className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-5 opacity-0 md:group-hover:opacity-100 transition duration-300">
                 <h2 className="text-xl font-semibold mb-2">
                   {project.title}
@@ -118,7 +172,6 @@ const Projects: React.FC = () => {
                 </a>
               </div>
 
-              {/* MOBILE BUTTON */}
               <a
                 href={project.link}
                 target="_blank"
