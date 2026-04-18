@@ -19,7 +19,7 @@ export const Contact: React.FC = () => {
   // 🌍 LANG
   const t = {
     uz: {
-      title: "Get In Touch",
+      title: "Bog'lanish",
       desc: "Loyiha takliflari, hamkorlik yoki shunchaki salom berish uchun quyidagi formani to'ldiring yoki to'g'ridan-to'g'ri bog'laning.",
       email: "Email",
       phone: "Phone",
