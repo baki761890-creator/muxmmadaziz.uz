@@ -104,7 +104,7 @@ export const Home: React.FC = () => {
         <Link
           to="/skills"
           className={`px-8 py-3 rounded-full font-semibold transition-all ${
-            dark ? 'glass hover:bg-white/10' : 'bg-black hover:bg-gray-900'
+            dark ? 'glass hover:bg-white/10' : 'bg-black text-white hover:bg-gray-900'
           }`}
         >
           {t[lang].skills}
