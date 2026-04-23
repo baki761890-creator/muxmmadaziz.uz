@@ -35,7 +35,7 @@ export const Contact: React.FC = () => {
       phName: "Ismingizni yozing",
       phEmail: "Email manzilingiz",
       phMsg: "Xabaringizni yozing..."
-    },
+    },  
     en: {
       title: "Get In Touch",
       desc: "Send a message for collaboration or project ideas.",
@@ -92,18 +92,34 @@ export const Contact: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('loading');
 
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setStatus('success');
-      setFormState({ name: '', email: '', message: '' });
-    } catch (error) {
-      setStatus('error');
-    }
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+
+  e.preventDefault();
+  setStatus('loading');
+
+  try {
+    const result = await emailjs.send(
+      'service_5varuzq',   
+      'template_7c10dqg',  
+      {
+        from_name: formState.name,
+        from_email: formState.email,
+        message: formState.message,
+      },
+      'A2gNqAPlnqnvkqNJ4'    
+    );
+
+    console.log(result.text);
+
+    setStatus('success');
+    setFormState({ name: '', email: '', message: '' });
+
+  } catch (error) {
+    console.error(error);
+    setStatus('error');
+  }
+};
 
   return (
     <motion.div
@@ -121,7 +137,6 @@ export const Contact: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
 
-          {/* LEFT TEXT */}
           <div className="space-y-8">
             <p className={`text-lg leading-relaxed ${dark ? 'text-neutral-400' : 'text-black'}`}>
               {t[lang].desc}
@@ -238,3 +253,6 @@ export const Contact: React.FC = () => {
     </motion.div>
   );
 };
+
+
+
